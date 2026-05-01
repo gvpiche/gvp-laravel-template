@@ -21,3 +21,18 @@ test('it seeds the default local users and admin role', function () {
         ->and($user->roles)->toHaveCount(0)
         ->and($user->password)->not->toBe('test1234');
 });
+
+test('it can log in as the seeded admin through the login link route', function () {
+    config(['login-link.allowed_environments' => ['testing']]);
+
+    $this->seed(UserSeeder::class);
+
+    $admin = User::where('email', 'admin@test.com')->firstOrFail();
+
+    $this->post('/laravel-login-link-login', [
+        'email' => 'admin@test.com',
+        'redirect_url' => '/dashboard',
+    ])->assertRedirect('/dashboard');
+
+    $this->assertAuthenticatedAs($admin);
+});

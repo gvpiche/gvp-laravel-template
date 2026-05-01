@@ -1,5 +1,4 @@
-import { Form, Head, usePage } from '@inertiajs/react';
-import LoginLink from '@/../../vendor/spatie/laravel-login-link/resources/ts/LoginLink';
+import { Form, Head, router, usePage } from '@inertiajs/react';
 import InputError from '@/components/input-error';
 import PasswordInput from '@/components/password-input';
 import TextLink from '@/components/text-link';
@@ -24,6 +23,13 @@ export default function Login({
     canRegister,
 }: Props) {
     const page = usePage();
+
+    const loginAs = (email: string) => {
+        router.post('/laravel-login-link-login', {
+            email,
+            redirect_url: '/dashboard',
+        });
+    };
 
     return (
         <>
@@ -117,18 +123,20 @@ export default function Login({
 
             {page.props.environment === 'local' && (
                 <div className="mt-6 grid gap-2">
-                    <LoginLink
-                        email="admin@test.com"
-                        label="Log in as admin"
-                        redirectUrl="/dashboard"
+                    <button
+                        type="button"
+                        onClick={() => loginAs('admin@test.com')}
                         className="w-full rounded-md border border-border px-4 py-2 text-center text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
-                    />
-                    <LoginLink
-                        email="user@test.com"
-                        label="Log in as user"
-                        redirectUrl="/dashboard"
+                    >
+                        Log in as admin
+                    </button>
+                    <button
+                        type="button"
+                        onClick={() => loginAs('user@test.com')}
                         className="w-full rounded-md border border-border px-4 py-2 text-center text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
-                    />
+                    >
+                        Log in as user
+                    </button>
                 </div>
             )}
         </>
