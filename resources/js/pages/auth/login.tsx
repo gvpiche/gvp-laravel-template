@@ -7,7 +7,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Spinner } from '@/components/ui/spinner';
-import { register } from '@/routes';
+import { dashboard, loginLinkLogin, register } from '@/routes';
 import { store } from '@/routes/login';
 import { request } from '@/routes/password';
 
@@ -25,9 +25,9 @@ export default function Login({
     const page = usePage();
 
     const loginAs = (email: string) => {
-        router.post('/laravel-login-link-login', {
+        router.post(loginLinkLogin.url(), {
             email,
-            redirect_url: '/dashboard',
+            redirect_url: dashboard.url(),
         });
     };
 
