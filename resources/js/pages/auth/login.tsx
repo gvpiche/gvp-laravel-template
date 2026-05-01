@@ -118,13 +118,13 @@ export default function Login({
             {page.props.environment === 'local' && (
                 <div className="mt-6 grid gap-2">
                     <LoginLink
-                        email="gabriel_vpiche@hotmail.com"
+                        email="admin@test.com"
                         label="Log in as admin"
                         redirectUrl="/dashboard"
                         className="w-full rounded-md border border-border px-4 py-2 text-center text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
                     />
                     <LoginLink
-                        email="user@gvptools.com"
+                        email="user@test.com"
                         label="Log in as user"
                         redirectUrl="/dashboard"
                         className="w-full rounded-md border border-border px-4 py-2 text-center text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"

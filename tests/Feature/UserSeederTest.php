@@ -10,8 +10,8 @@ uses(RefreshDatabase::class);
 test('it seeds the default local users and admin role', function () {
     $this->seed(UserSeeder::class);
 
-    $admin = User::where('email', 'gabriel_vpiche@hotmail.com')->first();
-    $user = User::where('email', 'user@gvptools.com')->first();
+    $admin = User::where('email', 'admin@test.com')->first();
+    $user = User::where('email', 'user@test.com')->first();
 
     expect(Role::where('name', 'Admin')->exists())->toBeTrue()
         ->and($admin)->not->toBeNull()

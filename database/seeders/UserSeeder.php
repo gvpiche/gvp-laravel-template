@@ -16,9 +16,9 @@ class UserSeeder extends Seeder
         $adminRole = Role::firstOrCreate(['name' => 'Admin']);
 
         $admin = User::updateOrCreate(
-            ['email' => 'gabriel_vpiche@hotmail.com'],
+            ['email' => 'admin@test.com'],
             [
-                'name' => 'Gabriel Vpiche',
+                'name' => 'Admin User',
                 'password' => 'test1234',
             ],
         );
@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
         $admin->assignRole($adminRole);
 
         User::updateOrCreate(
-            ['email' => 'user@gvptools.com'],
+            ['email' => 'user@test.com'],
             [
                 'name' => 'Regular User',
                 'password' => 'test1234',

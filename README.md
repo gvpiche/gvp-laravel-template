@@ -12,7 +12,7 @@ The template includes Laravel's React starter kit, Pest, Laravel Boost, Spatie P
 
 After installation, the database is migrated and seeded with:
 
-- `gabriel_vpiche@hotmail.com` with password `test1234` and the `Admin` role.
-- `user@gvptools.com` with password `test1234` and no role.
+- `admin@test.com` with password `test1234` and the `Admin` role.
+- `user@test.com` with password `test1234` and no role.
 
 In local environments, the login page displays shortcuts for both seeded users.
