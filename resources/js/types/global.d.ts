@@ -1,4 +1,5 @@
 import type { Auth } from '@/types/auth';
+import type { AppLayoutProps, AuthLayoutProps, FlashToast } from '@/types/ui';
 
 declare module '@inertiajs/core' {
     export interface InertiaConfig {
@@ -9,5 +10,10 @@ declare module '@inertiajs/core' {
             sidebarOpen: boolean;
             [key: string]: unknown;
         };
+        flashDataType: {
+            toast?: FlashToast;
+        };
+        layoutProps: Pick<AppLayoutProps, 'breadcrumbs'> &
+            Pick<AuthLayoutProps, 'title' | 'description'>;
     }
 }
